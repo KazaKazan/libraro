@@ -7,6 +7,7 @@ const authorField = document.getElementById("authorField")
 const pageField = document.getElementById("numberField")
 const statusField = document.getElementById("statusField")
 const delButton = document.getElementById("delButton")
+const selectAll = document.getElementById("selectAll")
 
 const library = [];
 const selected = [];
@@ -19,17 +20,16 @@ function Book(title,author,pages,read,ID){
     this.ID = ID;
 }
 
-function deleteBooks(){
-    selected.forEach(element => {
-        const parent = element.parentNode
-        const bookID = element.id.substring(6)
-        const libIndex = library.findIndex(x => x.ID === bookID)
-        library.splice(libIndex,1)
-        const selIndex = selected.indexOf(element)
-        selected.splice(selIndex,1)
-        parent.removeChild(element)
+function selAll(self) {
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    checkboxes.forEach(element => {
+        if(element != self && element != statusField){
+            element.checked = self.checked;
+            selectParent(element)
+        }
     });
-}
+    console.log(selected)
+};
 
 function selectParent(element) {
     const parent = element.parentNode
@@ -144,6 +144,20 @@ function addBook () {
     displayBook(newBook)
 };
 
+function deleteBooks(){
+    selected.forEach(element => {
+        const parent = element.parentNode
+        const bookID = element.id.substring(6)
+        const libIndex = library.findIndex(x => x.ID === bookID)
+        library.splice(libIndex,1)
+        const selIndex = selected.indexOf(element)
+        selected.splice(selIndex,1)
+        parent.removeChild(element)
+    });
+    
+    displayEmpty()
+};
+
 addButton.onclick = () => {
     addPrompt.classList.remove("hidden")
     clearFields()
@@ -162,5 +176,7 @@ acceptButton.onclick = () => {
 cancelButton.onclick = () => {
     addPrompt.classList.add("hidden")
 };
+
+selectAll.onclick = () => selAll(selectAll);
 
 window.onload = displayLibrary()
