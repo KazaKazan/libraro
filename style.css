@@ -12,6 +12,12 @@ body, html {
     font-family: Roboto, sans-serif;
 }
 
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* OVERRIDES */
 
 input[type="checkbox"] {
@@ -50,10 +56,11 @@ input[type="checkbox"] {
     background-color: var(--background);
     color: var(--foreground);
     display: grid;
-    grid-template-columns: 5% 40% 35% 10% 10%;
+    grid-template-columns: 3% 40% 35% 8% 10%;
     padding-bottom: 5px;
     user-select: none;
     align-items: center;
+    gap: 1%;
 }
 
 #contentDivider {
@@ -78,16 +85,15 @@ input[type="checkbox"] {
 
 .book {
     width: 80%;
+    height: 30px;
+    background-color: var(--background);
+    color: var(--foreground);
     display: grid;
-    grid-template-columns: 5% 40% 35% 10% 10%;
+    grid-template-columns: 3% 40% 35% 8% 10%;
     padding-bottom: 5px;
     user-select: none;
     align-items: center;
-}
-
-.bookDivider {
-    width: 70%;
-    color: var(--foreground-faded);
+    gap: 1%;
 }
 
 .flexCenter {
