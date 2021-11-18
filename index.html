@@ -13,14 +13,18 @@
 </head>
 <body>
 
-    <div id="addPrompt">
+    <div id="addPrompt" class="hidden">
         <div id="promptCard">
             <p>Book Name:</p>
-            <input type="text">
+            <input type="text" id="titleField">
             <p>Author Name:</p>
-            <input type="text">
+            <input type="text" id="authorField">
             <p>Page Count:</p>
-            <input type="number">
+            <input type="number" id="numberField">
+            <div id="promptStatus">
+                <p>I've read this book:</p>
+                <input type="checkbox" name="" id="statusField">
+            </div>
             <div id="promptButtons">
 
                 <div id="cancelButton" class="button">

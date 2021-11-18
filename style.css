@@ -76,7 +76,7 @@ input[type="checkbox"] {
 
 #emptyContainer {
     position: absolute;
-    padding-top: 100px;
+    padding-top: 150px;
     width: 80%;
 }
 
@@ -85,6 +85,8 @@ input[type="checkbox"] {
     font-size: 48px;
     color: var(--foreground-faded);
     user-select: none;
+    white-space: normal;
+    overflow: hidden;
 }
 
 #addButton {
@@ -112,7 +114,7 @@ input[type="checkbox"] {
 
 #promptCard {
     width: 300px;
-    height: 300px;
+    height: 350px;
     background-color: var(--background);
     border-radius: 20px;
     display: flex;
@@ -120,8 +122,14 @@ input[type="checkbox"] {
     padding: 20px;
 }
 
+#promptStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #promptButtons {
-    padding-top: 20px;
     display: flex;
     justify-content: space-around;
 }
