@@ -62,6 +62,8 @@ input[type="checkbox"] {
 }
 
 #emptyContainer {
+    position: absolute;
+    padding-top: 100px;
     width: 80%;
 }
 
@@ -69,9 +71,24 @@ input[type="checkbox"] {
     font-weight: 900;
     font-size: 48px;
     color: var(--foreground-faded);
+    user-select: none;
 }
 
 /* CLASSES */
+
+.book {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 5% 40% 35% 10% 10%;
+    padding-bottom: 5px;
+    user-select: none;
+    align-items: center;
+}
+
+.bookDivider {
+    width: 70%;
+    color: var(--foreground-faded);
+}
 
 .flexCenter {
     display: flex;
