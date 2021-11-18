@@ -87,6 +87,16 @@ input[type="checkbox"] {
     user-select: none;
 }
 
+#addButton {
+    bottom: 20px;
+    right: 20px;
+}
+
+#delButton {
+    bottom: 20px;
+    left: 20px;
+}
+
 /* CLASSES */
 
 .book {
@@ -111,6 +121,24 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.button {
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    background-color: var(--background);
+    border: 3px solid var(--foreground);
+    border-radius: 50%;
+}
+
+.button:hover {
+    box-shadow: 3px 3px var(--foreground);
+}
+
+.button:active {
+    translate: 2px 2px;
+    box-shadow: 1px 1px var(--foreground);
 }
 
 .hidden {visibility: hidden;}
