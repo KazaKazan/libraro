@@ -1,0 +1,11 @@
+:root {
+    --background: white;
+    --foreground: black;
+    --accent-one: red;
+    --accent-two: yellow;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
