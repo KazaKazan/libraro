@@ -101,6 +101,11 @@ input[type="checkbox"] {
     gap: 1%;
 }
 
+.flexJustify {
+    display: flex;
+    justify-content: center;
+}
+
 .flexCenter {
     display: flex;
     align-items: center;

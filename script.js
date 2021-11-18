@@ -43,13 +43,15 @@ function displayBooks () {
             author.textContent = element.author;
             newBook.appendChild(author)
 
+            const numberCont = document.createElement("div")
+            numberCont.classList.add("flexJustify")
             const pageNumber = document.createElement("p");
             pageNumber.textContent = element.pages;
-            pageNumber.setAttribute("justify-self","center")
-            newBook.appendChild(pageNumber)
+            numberCont.appendChild(pageNumber)
+            newBook.appendChild(numberCont)
 
             const status = document.createElement("p");
-            if(element.status){
+            if(element.read){
                 status.textContent = "Read";
             }
             else{
