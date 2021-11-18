@@ -1,21 +1,22 @@
 const library = [];
 
-function Book(title,author,pages,read){
+function Book(title,author,pages,read,ID){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.ID = ID;
 }
 
-const bookA = new Book("Book A","Author A",100,false);
-const bookB = new Book("Book B","Author B",250,false);
-const bookC = new Book("Book C","Author C",100,true);
+const bookA = new Book("Book A","Author A",100,false,0);
+const bookB = new Book("Book B","Author B",250,false,1);
+const bookC = new Book("Book C","Author C",100,true,2);
 
-for(let i = 0; i < 10; i++){
-    library.push(bookA)
-    library.push(bookB)
-    library.push(bookC)
-}
+//for(let i = 0; i < 10; i++){
+//    library.push(bookA)
+//    library.push(bookB)
+//    library.push(bookC)
+//}
 
 
 function displayBooks () {
@@ -59,6 +60,8 @@ function displayBooks () {
             }
             status.classList.add("end")
             newBook.appendChild(status)
+
+            newBook.setAttribute("id","bookid" + toString(element.ID))
 
             bookShelf.appendChild(newBook)
         });
