@@ -6,8 +6,10 @@ const titleField = document.getElementById("titleField")
 const authorField = document.getElementById("authorField")
 const pageField = document.getElementById("numberField")
 const statusField = document.getElementById("statusField")
+const delButton = document.getElementById("delButton")
 
 const library = [];
+const selected = [];
 
 function Book(title,author,pages,read,ID){
     this.title = title;
@@ -16,6 +18,40 @@ function Book(title,author,pages,read,ID){
     this.read = read;
     this.ID = ID;
 }
+
+function deleteBooks(){
+    selected.forEach(element => {
+        const parent = element.parentNode
+        const bookID = element.id.substring(6)
+        const libIndex = library.findIndex(x => x.ID === bookID)
+        library.splice(libIndex,1)
+        const selIndex = selected.indexOf(element)
+        selected.splice(selIndex,1)
+        parent.removeChild(element)
+    });
+}
+
+function selectParent(element) {
+    const parent = element.parentNode
+    const index = selected.indexOf(parent);
+    if (element.checked != true){
+        if (index > -1) {
+            selected.splice(index, 1);
+        }
+    }
+    else {
+        if (index === -1) {
+            selected.push(parent)
+        }
+    }
+
+    if (selected.length === 0) {
+        delButton.classList.add("hiddenAnim")
+    }
+    else {
+        delButton.classList.remove("hiddenAnim")
+    }
+};
 
 function clearFields () {
     titleField.value = null;
@@ -28,17 +64,15 @@ function displayEmpty () {
     const emptyContainer = document.getElementById("emptyContainer");
 
     if (library.length === 0) {
-        emptyContainer.classList.remove("hidden")
+        emptyContainer.classList.remove("hiddenAnim")
     }
     else {
-        emptyContainer.classList.add("hidden")
+        emptyContainer.classList.add("hiddenAnim")
     }
 };
 
 
 function displayBook (book) {
-    library.push(book);
-
     const bookShelf = document.getElementById("content");
 
     const newBook = document.createElement("div");
@@ -47,6 +81,7 @@ function displayBook (book) {
     const selector = document.createElement("input")
     selector.setAttribute("type","checkbox")
     selector.setAttribute("width","14px")
+    selector.onclick = () => selectParent(selector)
     newBook.appendChild(selector)
 
     const bookName = document.createElement("p");
@@ -75,7 +110,7 @@ function displayBook (book) {
     status.classList.add("end")
     newBook.appendChild(status)
 
-    newBook.setAttribute("id","bookid" + toString(book.ID))
+    newBook.setAttribute("id","bookid" + book.ID)
 
     bookShelf.appendChild(newBook)
     displayEmpty()
@@ -93,7 +128,17 @@ function displayLibrary () {
 };
 
 function addBook () {
-    const newBook = new Book(titleField.value,authorField.value,pageField.value,statusField.value,library.length);
+    let ID = Math.random().toString().substring(2);
+
+    let dupe = library.find(x => x.ID === ID);
+    if (dupe != undefined) {
+        while(dupe != undefined){
+            ID = Math.random().toString().substring(2);
+            dupe = library.find(x => x.ID === ID);
+        }
+    }
+
+    const newBook = new Book(titleField.value,authorField.value,pageField.value,statusField.value,ID);
     
     library.push(newBook)
     displayBook(newBook)
@@ -103,6 +148,11 @@ addButton.onclick = () => {
     addPrompt.classList.remove("hidden")
     clearFields()
 };
+
+delButton.onclick = () => {
+    deleteBooks()
+    delButton.classList.add("hiddenAnim")
+}
 
 acceptButton.onclick = () => {
     addBook()
