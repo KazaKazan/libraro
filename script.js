@@ -57,7 +57,7 @@ function clearFields () {
     titleField.value = null;
     authorField.value = null;
     pageField.value = null;
-    statusField.balue = false;
+    statusField.checked = false;
 }
 
 function displayEmpty () {
@@ -155,6 +155,9 @@ function deleteBooks(){
         parent.removeChild(element)
     });
     
+    if (selectAll.checked) {
+        selectAll.checked = false
+    }
     displayEmpty()
 };
 
