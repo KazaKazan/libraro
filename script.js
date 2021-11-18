@@ -11,7 +11,7 @@ const bookA = new Book("Book A","Author A",100,false);
 const bookB = new Book("Book B","Author B",250,false);
 const bookC = new Book("Book C","Author C",100,true);
 
-for(let i = 0; i < 5; i++){
+for(let i = 0; i < 10; i++){
     library.push(bookA)
     library.push(bookB)
     library.push(bookC)

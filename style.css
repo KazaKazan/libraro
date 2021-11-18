@@ -50,22 +50,27 @@ input[type="checkbox"] {
 }
 
 #contentHeader {
+    position: -webkit-sticky;
     position: sticky;
+    top: 0;
     width: 80%;
     height: 30px;
     background-color: var(--background);
     color: var(--foreground);
     display: grid;
     grid-template-columns: 3% 40% 35% 8% 10%;
-    padding-bottom: 5px;
+    grid-template-rows: 99% 1%;
     user-select: none;
     align-items: center;
     gap: 1%;
+    padding-bottom: 5px;
 }
 
 #contentDivider {
-    width: 80%;
-    margin-top: 0;
+    width: 100%;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
 }
 
 #emptyContainer {
