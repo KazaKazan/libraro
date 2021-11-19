@@ -183,3 +183,6 @@ cancelButton.onclick = () => {
 selectAll.onclick = () => selAll(selectAll);
 
 window.onload = displayLibrary()
+window.onload = function () {
+    selectAll.checked = false
+}
