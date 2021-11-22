@@ -201,17 +201,11 @@ function loadData () {
 
 markRead.onclick = () => {
     markBooks(true)
-    delButton.classList.add("hiddenAnim")
-    markRead.classList.add("hiddenAnim")
-    markUnread.classList.add("hiddenAnim")
     saveData()
 };
 
 markUnread.onclick = () => {
     markBooks(false)
-    delButton.classList.add("hiddenAnim")
-    markRead.classList.add("hiddenAnim")
-    markUnread.classList.add("hiddenAnim")
     saveData()
 };
 
