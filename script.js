@@ -194,8 +194,15 @@ function loadData () {
     library = JSON.parse(window.localStorage.getItem("library"));
 }
 
-markRead.onclick = () => markBooks(true)
-markUnread.onclick = () => markBooks(false)
+markRead.onclick = () => {
+    markBooks(true)
+    saveData()
+};
+
+markUnread.onclick = () => {
+    markBooks(false)
+    saveData()
+};
 
 addButton.onclick = () => {
     addPrompt.classList.remove("hidden")
@@ -205,11 +212,13 @@ addButton.onclick = () => {
 delButton.onclick = () => {
     deleteBooks()
     delButton.classList.add("hiddenAnim")
+    saveData()
 }
 
 acceptButton.onclick = () => {
     addBook()
     addPrompt.classList.add("hidden")
+    saveData()
 };
 
 cancelButton.onclick = () => {
