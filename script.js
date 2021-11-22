@@ -238,5 +238,8 @@ selectAll.onclick = () => selAll(selectAll);
 window.onload = function () {
     selectAll.checked = false
     loadData()
+    if (library === null){
+        library = []
+    };
     displayLibrary()
 }
