@@ -8,6 +8,8 @@ const pageField = document.getElementById("numberField")
 const statusField = document.getElementById("statusField")
 const delButton = document.getElementById("delButton")
 const selectAll = document.getElementById("selectAll")
+const markRead = document.getElementById("markRead")
+const markUnread = document.getElementById("markUnread")
 
 const library = [];
 const selected = [];
@@ -46,10 +48,14 @@ function selectParent(element) {
     }
 
     if (selected.length === 0) {
-        delButton.classList.add("hiddenAnim")
+        delButton.classList.add("hiddenAnim");
+        markRead.classList.add("hiddenAnim");
+        markUnread.classList.add("hiddenAnim");
     }
     else {
-        delButton.classList.remove("hiddenAnim")
+        delButton.classList.remove("hiddenAnim");
+        markRead.classList.remove("hiddenAnim");
+        markUnread.classList.remove("hiddenAnim");
     }
 };
 
@@ -108,6 +114,7 @@ function displayBook (book) {
         status.textContent = "Not read";
     }
     status.classList.add("end")
+    status.setAttribute("id","statusid" + book.ID)
     newBook.appendChild(status)
 
     newBook.setAttribute("id","bookid" + book.ID)
