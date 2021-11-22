@@ -87,15 +87,19 @@ function displayBook (book) {
     const selector = document.createElement("input")
     selector.setAttribute("type","checkbox")
     selector.setAttribute("width","14px")
+    selector.setAttribute("grid-area","sel")
+    selector.classList.add("start")
     selector.onclick = () => selectParent(selector)
     newBook.appendChild(selector)
 
     const bookName = document.createElement("p");
     bookName.textContent = book.title;
     bookName.classList.add("start")
+    bookName.setAttribute("grid-area","title")
     newBook.appendChild(bookName)
 
     const author = document.createElement("p");
+    author.setAttribute("grid-area","author")
     author.textContent = book.author;
     newBook.appendChild(author)
 
@@ -115,6 +119,7 @@ function displayBook (book) {
     }
     status.classList.add("end")
     status.setAttribute("id","statusid" + book.ID)
+    status.setAttribute("grid-area","status")
     newBook.appendChild(status)
 
     newBook.setAttribute("id","bookid" + book.ID)
@@ -182,8 +187,8 @@ function markBooks(status){
         else {
             statusField.textContent = "Not read"
         }
-    });
-    
+
+    });    
 }
 
 function saveData () {
@@ -196,11 +201,17 @@ function loadData () {
 
 markRead.onclick = () => {
     markBooks(true)
+    delButton.classList.add("hiddenAnim")
+    markRead.classList.add("hiddenAnim")
+    markUnread.classList.add("hiddenAnim")
     saveData()
 };
 
 markUnread.onclick = () => {
     markBooks(false)
+    delButton.classList.add("hiddenAnim")
+    markRead.classList.add("hiddenAnim")
+    markUnread.classList.add("hiddenAnim")
     saveData()
 };
 

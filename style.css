@@ -165,6 +165,7 @@ input[type="checkbox"] {
     color: var(--foreground);
     display: grid;
     grid-template-columns: 3% 40% 35% 8% 10%;
+    grid-template-areas: "sel title author page status";
     padding-bottom: 5px;
     user-select: none;
     align-items: center;
@@ -219,3 +220,21 @@ input[type="checkbox"] {
 .hidden{visibility: hidden;}
 .end {justify-self: end;}
 .start {justify-self: start;}
+.mobileHide {visibility: visible;}
+
+/* MOBILE SUPPORT */
+
+@media only screen and (max-width: 500px) {
+
+    .book {
+        grid-template-columns: 3% 55% 0px 0px 30%;
+        grid-template-areas: "sel title author page status";
+        gap: 4%;
+    }
+
+    #contentHeader {
+        grid-template-columns: 3% 55% 0px 0px 30%;
+        gap: 4%
+    }
+
+}
