@@ -11,7 +11,7 @@ const selectAll = document.getElementById("selectAll")
 const markRead = document.getElementById("markRead")
 const markUnread = document.getElementById("markUnread")
 
-const library = [];
+let library = [];
 const selected = [];
 
 function Book(title,author,pages,read,ID){
@@ -186,6 +186,14 @@ function markBooks(status){
     
 }
 
+function saveData () {
+    window.localStorage.setItem("library",JSON.stringify(library));
+}
+
+function loadData () {
+    library = JSON.parse(window.localStorage.getItem("library"));
+}
+
 markRead.onclick = () => markBooks(true)
 markUnread.onclick = () => markBooks(false)
 
@@ -210,7 +218,9 @@ cancelButton.onclick = () => {
 
 selectAll.onclick = () => selAll(selectAll);
 
-window.onload = displayLibrary()
+
 window.onload = function () {
     selectAll.checked = false
+    loadData()
+    displayLibrary()
 }
