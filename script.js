@@ -212,6 +212,8 @@ addButton.onclick = () => {
 delButton.onclick = () => {
     deleteBooks()
     delButton.classList.add("hiddenAnim")
+    markRead.classList.add("hiddenAnim")
+    markUnread.classList.add("hiddenAnim")
     saveData()
 }
 
