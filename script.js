@@ -107,7 +107,7 @@ function displayBook (book) {
     newBook.appendChild(numberCont)
 
     const status = document.createElement("p");
-    if(book.read){
+    if(book.read === true){
         status.textContent = "Read";
     }
     else{
@@ -167,6 +167,27 @@ function deleteBooks(){
     }
     displayEmpty()
 };
+
+function markBooks(status){
+    selected.forEach(element => {
+        const parent = element.parentNode
+        const bookID = element.id.substring(6)
+        const libIndex = library.findIndex(x => x.ID === bookID)
+        library[libIndex].read = status
+        const statusID = "statusid" + bookID
+        const statusField = document.getElementById(statusID)
+        if(status === true){
+            statusField.textContent = "Read"
+        }
+        else {
+            statusField.textContent = "Not read"
+        }
+    });
+    
+}
+
+markRead.onclick = () => markBooks(true)
+markUnread.onclick = () => markBooks(false)
 
 addButton.onclick = () => {
     addPrompt.classList.remove("hidden")
