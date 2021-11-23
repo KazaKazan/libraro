@@ -12,7 +12,7 @@ const markRead = document.getElementById("markRead")
 const markUnread = document.getElementById("markUnread")
 
 let library = [];
-const selected = [];
+let selected = [];
 
 function Book(title,author,pages,read,ID){
     this.title = title;
@@ -30,12 +30,12 @@ function selAll(self) {
             selectParent(element)
         }
     });
-    console.log(selected)
 };
 
 function selectParent(element) {
     const parent = element.parentNode
     const index = selected.indexOf(parent);
+
     if (element.checked != true){
         if (index > -1) {
             selected.splice(index, 1);
@@ -162,14 +162,15 @@ function deleteBooks(){
         const bookID = element.id.substring(6)
         const libIndex = library.findIndex(x => x.ID === bookID)
         library.splice(libIndex,1)
-        const selIndex = selected.indexOf(element)
-        selected.splice(selIndex,1)
         parent.removeChild(element)
     });
     
     if (selectAll.checked) {
         selectAll.checked = false
     }
+
+    selected = []
+
     displayEmpty()
 };
 
