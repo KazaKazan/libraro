@@ -140,20 +140,27 @@ function displayLibrary () {
 };
 
 function addBook () {
-    let ID = Math.random().toString().substring(2);
+    if(titleField.value != ""){
+        let ID = Math.random().toString().substring(2);
 
-    let dupe = library.find(x => x.ID === ID);
-    if (dupe != undefined) {
-        while(dupe != undefined){
-            ID = Math.random().toString().substring(2);
-            dupe = library.find(x => x.ID === ID);
+        let dupe = library.find(x => x.ID === ID);
+        if (dupe != undefined) {
+            while(dupe != undefined){
+                ID = Math.random().toString().substring(2);
+                dupe = library.find(x => x.ID === ID);
+            }
         }
-    }
 
-    const newBook = new Book(titleField.value,authorField.value,pageField.value,statusField.value,ID);
-    
-    library.push(newBook)
-    displayBook(newBook)
+        const newBook = new Book(titleField.value,authorField.value,pageField.value,statusField.value,ID);
+        
+        library.push(newBook)
+        displayBook(newBook)
+        addPrompt.classList.add("hidden")
+        saveData()
+    }
+    else{
+        titleField.classList.add("required")
+    }
 };
 
 function deleteBooks(){
@@ -211,6 +218,7 @@ markUnread.onclick = () => {
 };
 
 addButton.onclick = () => {
+    titleField.classList.remove("required")
     addPrompt.classList.remove("hidden")
     clearFields()
 };
@@ -225,8 +233,6 @@ delButton.onclick = () => {
 
 acceptButton.onclick = () => {
     addBook()
-    addPrompt.classList.add("hidden")
-    saveData()
 };
 
 cancelButton.onclick = () => {
